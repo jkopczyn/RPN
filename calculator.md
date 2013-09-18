@@ -38,6 +38,9 @@ This exercise may require two to four hours.
     > 2 9 3 + *
     24
 
+    > 20 13 - 2 / 
+    3.5
+
 Note that if your output is reasonable, it doesn't have to match this output
 precisely; for example, if your calculator outputs floating point numbers, you
 are not required to strip the trailing 0 from the output.
