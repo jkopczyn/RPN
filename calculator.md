@@ -32,14 +32,32 @@ This exercise may require two to four hours.
     > 5 8 +
     13
 
+---
+
     > -3 -2 * 5 +
     11
+
+---
 
     > 2 9 3 + *
     24
 
+---
+
     > 20 13 - 2 / 
     3.5
+
+---
+
+The stack should be persistent between lines:                                   
+                                                                                
+    > 3                                                                         
+    3                                                                           
+                                                                                
+    > 2 +                                                                       
+    5                                                                           
+
+---
 
 Note that if your output is reasonable, it doesn't have to match this output
 precisely; for example, if your calculator outputs floating point numbers, you
