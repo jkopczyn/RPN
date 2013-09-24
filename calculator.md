@@ -72,19 +72,3 @@ This exercise may require two to four hours.
     2
     > / 
     3.5
-
----
-
-Bonus points if your calculator can handle multiple tokens on the same line:
-                                                                                
-    > 3 5 +                                                                        
-    8                                                                           
-                                                                                
-    > 2 5 2 * * 13 +
-    33                                                                          
-
----
-
-Note that if your output is reasonable, it doesn't have to match this output
-precisely; for example, if your calculator outputs floating point numbers, you
-are not required to strip the trailing 0 from the output.
