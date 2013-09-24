@@ -16,15 +16,13 @@ This exercise may require two to four hours.
 2. It should implement the four standard arithmetic operators.
 
 3. It should support negative and decimal numbers, and should not have
-   arbitrary limits on the number of operands.
+   arbitrary limits on the number of operands.  (That is, support any number
+   of operations and numbers.)
 
 4. The calculator should not allow invalid or undefined behavior.
 
 5. The calculator should exit when it receives a `q` command or an end of input 
    indicator.
-
-6. Write unit tests.  These should be executable independently of your
-   calculator.
 
 
 ## Sample Input/Output
