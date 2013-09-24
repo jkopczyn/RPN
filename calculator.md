@@ -29,33 +29,61 @@ This exercise may require two to four hours.
 
 ## Sample Input/Output
 
-    > 5 8 +
+    > 5 
+    5
+    > 8
+    8
+    > +
     13
 
 ---
 
-    > -3 -2 * 5 +
+    > -3
+    -3
+    > -2
+    -2
+    > *
+    6
+    > 5
+    5
+    > +
     11
 
 ---
 
-    > 2 9 3 + *
+    > 2
+    2
+    > 9
+    9
+    > 3
+    3 
+    > +
+    12 
+    > *
     24
 
 ---
 
-    > 20 13 - 2 / 
+    > 20
+    20
+    > 13
+    13
+    > -
+    7
+    > 2
+    2
+    > / 
     3.5
 
 ---
 
-The stack should be persistent between lines:                                   
+Bonus points if your calculator can handle multiple tokens on the same line:
                                                                                 
-    > 3                                                                         
-    3                                                                           
+    > 3 5 +                                                                        
+    8                                                                           
                                                                                 
-    > 2 +                                                                       
-    5                                                                           
+    > 2 5 2 * * 13 +
+    33                                                                          
 
 ---
 
