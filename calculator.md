@@ -22,7 +22,7 @@ This exercise may require two to four hours.
 4. The calculator should not allow invalid or undefined behavior.
 
 5. The calculator should exit when it receives a `q` command or an end of input 
-   indicator.
+   indicator (EOF).
 
 
 ## Sample Input/Output
