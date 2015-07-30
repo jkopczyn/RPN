@@ -16,8 +16,7 @@ This exercise may require two to four hours.
 2. It should implement the four standard arithmetic operators.
 
 3. It should support negative and decimal numbers, and should not have
-   arbitrary limits on the number of operands.  (That is, support any number
-   of operations and numbers.)
+   arbitrary limits on the number of operations.
 
 4. The calculator should not allow invalid or undefined behavior.
 
