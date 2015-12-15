@@ -4,7 +4,8 @@ Please implement a reverse polish notation (RPN) calculator.  It can be written
 in a (non-esoteric) language you choose; it will be evaluated based on its
 successful implementation of the algorithm, its style and conformance to best
 practices according to the standards of the language, and its extensibility.
-Imagine that this is your first commit into our production code.
+Your solution will be reviewed by the team so imagine that this is your first
+commit into our production codebase.
 
 ## Specifications
 
