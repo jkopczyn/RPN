@@ -6,8 +6,8 @@ successful implementation of the algorithm, its style and conformance to best
 practices according to the standards of the language, and how easy it is to
 understand and modify. This is a small problem, but write code representative
 of how you organize things in a larger context.
-Your solution will be reviewed by the whole team, so imagine that this is your
-first contribution to our production codebase! :smile:
+Your solution will be reviewed by the whole team, so imagine that these are your
+first commits to our production codebase! :smile:
 
 ## Specifications
 
