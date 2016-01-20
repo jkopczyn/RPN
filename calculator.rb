@@ -24,22 +24,26 @@ class RPNCalculator
     @stack.push (n%1).zero? ? n.to_i : n
     puts @stack.last
   end
+
+  def take_input
+    while true
+      print ">"
+      token = gets
+      if token.nil?
+        print "\n"
+        return
+      elsif token.strip! == "q"
+        return
+      elsif %w[+ - * /].include?(token)
+        operation(token.to_sym)
+      elsif token == "0" or token.to_f != 0
+        number(token.to_f)
+      else
+        puts "Invalid Entry; only numbers and + - * / allowed"
+      end
+    end
+  end
 end
 
 calc = RPNCalculator.new
-while true
-  print ">"
-  token = gets
-  if token.nil?
-    print "\n"
-    break
-  elsif token.strip! == "q"
-    break
-  elsif %w[+ - * /].include?(token)
-    calc.operation(token.to_sym)
-  elsif token == "0" or token.to_f != 0
-    calc.number(token.to_f)
-  else
-    puts "Invalid Entry; only numbers and + - * / allowed"
-  end
-end
+calc.take_input
