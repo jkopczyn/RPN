@@ -8,7 +8,11 @@ while true
     if token.nil?
       print "\n"
       break
-    elsif token.strip == "q"
+    elsif token.strip! == "q"
       break
+    elsif token in %w[+ - * /]
+      calc.operation(token.to_sym)
+    elsif token == "0" or token.to_i != 0
+      calc.number(token.to_i)
     end
 end
