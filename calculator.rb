@@ -39,5 +39,7 @@ while true
     calc.operation(token.to_sym)
   elsif token == "0" or token.to_f != 0
     calc.number(token.to_f)
+  else
+    puts "Invalid Entry; only numbers and + - * / allowed"
   end
 end
