@@ -120,9 +120,13 @@ describe  RPNCalculator do
     end
   end
 
+  #fake_stdin borrowed from
+  #https://gist.github.com/nu7hatch/631329/d2b1c2728a24cc3cab2d6967bfef17fe89016778
   describe '#take_input' do
     it 'should be able to quit' do
-      fail
+      fake_stdin("q") do 
+        expect(@calc.take_input).to be nil
+      end
     end
 
     it 'should parse numbers' do
