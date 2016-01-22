@@ -7,11 +7,9 @@ class RPNCalculator
 
   def operation(op)
     if @stack.length < 2
-      puts "Not Enough Arguments"
-      return
+      return "Not Enough Arguments"
     elsif op == :/ and @stack.last == 0
-      puts "Can't Divide By 0"
-      return
+      return "Can't Divide By 0"
     else
       second = @stack.pop
       first  = @stack.pop
@@ -22,9 +20,8 @@ class RPNCalculator
   end
 
   def number(n)
-    return unless n.is_a? Numeric
+    return "Not A Number" unless n.is_a? Numeric
     @stack.push (n%1).zero? ? n.to_i : n
-    puts @stack.last
     @stack.last
   end
 
@@ -38,9 +35,9 @@ class RPNCalculator
       elsif token.strip! == "q"
         return
       elsif %w[+ - * /].include?(token)
-        operation(token.to_sym)
+        puts operation(token.to_sym)
       elsif token == "0" or token.to_f != 0
-        number(token.to_f)
+        puts number(token.to_f)
       else
         puts "Invalid Entry; only numbers and + - * / allowed"
       end
