@@ -17,12 +17,12 @@ class RPNCalculator
       first  = @stack.pop
       first = first.to_f if op == :/
       result = first.send(op,second)
-      @stack.push (result%1).zero? ? result.to_i : result
-      puts @stack.last
+      number(result)
     end
   end
 
   def number(n)
+    return unless n.is_a? Numeric
     @stack.push (n%1).zero? ? n.to_i : n
     puts @stack.last
   end
