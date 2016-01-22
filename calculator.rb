@@ -6,7 +6,9 @@ class RPNCalculator
   end
 
   def operation(op)
-    if @stack.length < 2
+    if not %w[ + - * /].map(&:to_sym).include?(op)
+      return "Not A Valid Operation"
+    elsif @stack.length < 2
       return "Not Enough Arguments"
     elsif op == :/ and @stack.last == 0
       return "Can't Divide By 0"

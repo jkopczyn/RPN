@@ -19,12 +19,13 @@ describe  RPNCalculator do
 
     it 'should reject non-numbers' do
       expect(@calc.stack).to be_empty
-      @calc.number("foo")
-      @calc.number(:bar)
-      @calc.number({1 => 'q'})
-      @calc.number([])
-      @calc.number("1")
-      @calc.number("0")
+      expect(@calc.number("foo")).to eq "Not A Number"
+      expect(@calc.number(:bar)).to eq "Not A Number"
+      expect(@calc.number(:+)).to eq "Not A Number"
+      expect(@calc.number({1 => 'q'})).to eq "Not A Number"
+      expect(@calc.number([])).to eq "Not A Number"
+      expect(@calc.number("1")).to eq "Not A Number"
+      expect(@calc.number("0")).to eq "Not A Number"
       expect(@calc.stack).to be_empty
     end
 
@@ -43,11 +44,20 @@ describe  RPNCalculator do
 
   describe '#operation' do
     it 'should reject non-operations' do
-      fail
+      expect(@calc.operation("foo")).to eq "Not A Valid Operation"
+      expect(@calc.operation(:bar)).to eq "Not A Valid Operation"
+      expect(@calc.operation(3)).to eq "Not A Valid Operation"
+      expect(@calc.operation({1 => 'q'})).to eq "Not A Valid Operation"
+      expect(@calc.operation([])).to eq "Not A Valid Operation"
+      expect(@calc.operation("1")).to eq "Not A Valid Operation"
+      expect(@calc.operation("0")).to eq "Not A Valid Operation"
     end
     
     it 'should accept all four normal operations' do
-      fail
+      expect(@calc.operation(:+)).to_not eq "Not A Valid Operation"
+      expect(@calc.operation(:-)).to_not eq "Not A Valid Operation"
+      expect(@calc.operation(:*)).to_not eq "Not A Valid Operation"
+      expect(@calc.operation(:/)).to_not eq "Not A Valid Operation"
     end
     context 'with numbers on the stack' do
       before :each do
@@ -56,19 +66,19 @@ describe  RPNCalculator do
       end
 
       it 'should add correctly' do
-        fail
+        expect(@calc.operation(:+)).to eq 7
       end
 
       it 'should subtract correctly' do
-        fail
+        expect(@calc.operation(:-)).to eq -1
       end
 
       it 'should multiply correctly' do
-        fail
+        expect(@calc.operation(:*)).to eq 12
       end
 
       it 'should divide correctly' do
-        fail
+        expect(@calc.operation(:/)).to eq 0.75
       end
 
       it 'should put the results of operations on the stack' do
