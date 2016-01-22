@@ -121,6 +121,46 @@ describe  RPNCalculator do
 
   #fake_stdin borrowed from
   #https://gist.github.com/nu7hatch/631329/d2b1c2728a24cc3cab2d6967bfef17fe89016778
+  describe '#take_input' do
+    before :each do
+      @num = 5
+      @op = :+
+      allow(@calc).to receive_messages(
+        number: @num,
+        operation: @op)
+    end
+
+    it 'should send numbers to #number' do
+      expect(@calc).to receive(:number).with(@num)
+      fake_stdin(@num.to_s) do
+        expect do 
+          @calc.take_input
+        end.to output(">#{@num}\n>\n").to_stdout
+      end
+    end
+
+    it 'should send operations to #operation' do
+      expect(@calc).to receive(:operation).with(@op)
+      fake_stdin(@op.to_s) do
+        expect do 
+          @calc.take_input
+        end.to output(">#{@op}\n>\n").to_stdout
+      end
+    end
+
+    it 'should raise an error for anything else' do
+      err = "Invalid Entry; only numbers and + - * / allowed"
+      malformed = ["foo", "{1 => 'q'}", "[]"]
+      malformed.each do |input|
+        fake_stdin(input) do
+          expect do 
+            @calc.take_input
+          end.to output(">#{err}\n>\n").to_stdout
+        end
+      end
+    end
+  end
+
   describe 'integration' do
     specify 'should be able to quit' do
       fake_stdin("q") do
