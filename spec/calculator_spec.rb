@@ -82,21 +82,42 @@ describe  RPNCalculator do
       end
 
       it 'should put the results of operations on the stack' do
-        fail
+        @calc.operation(:+)
+        expect(@calc.stack.last).to eq 7
+        @calc.stack.push(3)
+        @calc.stack.push(4)
+        @calc.operation(:-)
+        expect(@calc.stack.last).to eq -1
+        @calc.stack.push(3)
+        @calc.stack.push(4)
+        @calc.operation(:*)
+        expect(@calc.stack.last).to eq 12
+        @calc.stack.push(3)
+        @calc.stack.push(4)
+        @calc.operation(:/)
+        expect(@calc.stack.last).to eq 0.75
       end
     end
 
     context 'without a suitable stack' do
       it 'should reject operations with less than two operands available' do
-        fail
+        expect(@calc.operation(:+)).to eq "Not Enough Arguments"
+        expect(@calc.operation(:-)).to eq "Not Enough Arguments"
+        expect(@calc.operation(:*)).to eq "Not Enough Arguments"
+        expect(@calc.operation(:/)).to eq "Not Enough Arguments"
+        @calc.stack.push(3)
+        expect(@calc.operation(:+)).to eq "Not Enough Arguments"
+        expect(@calc.operation(:-)).to eq "Not Enough Arguments"
+        expect(@calc.operation(:*)).to eq "Not Enough Arguments"
+        expect(@calc.operation(:/)).to eq "Not Enough Arguments"
       end
 
       it 'should reject division if it would divide by zero' do
-        fail
+        @calc.stack.push(3)
+        @calc.stack.push(0)
+        expect(@calc.operation(:/)).to eq "Can't Divide By 0"
       end
     end
-
-
   end
 
   describe '#take_input' do
