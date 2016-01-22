@@ -61,8 +61,7 @@ describe  RPNCalculator do
     end
     context 'with numbers on the stack' do
       before :each do
-        @calc.stack.push(3)
-        @calc.stack.push(4)
+        @calc.stack.push(3,4)
       end
 
       it 'should add correctly' do
@@ -122,7 +121,7 @@ describe  RPNCalculator do
 
   #fake_stdin borrowed from
   #https://gist.github.com/nu7hatch/631329/d2b1c2728a24cc3cab2d6967bfef17fe89016778
-  describe '#take_input' do
+  describe 'integration' do
     specify 'should be able to quit' do
       fake_stdin("q") do
         expect do 
@@ -136,15 +135,34 @@ describe  RPNCalculator do
         expect do 
           @calc.take_input
         end.to output(">2\n>3.445671\n>-5\n>\n").to_stdout
+        expect(@calc.stack).to eq [2,3.445671,-5]
       end
     end
 
-    specify 'should parse operations' do
+    specify 'should parse operations' do 
       @calc.stack.push(7,4)
-      fake_stdin("-\n2\n*\n1\n+\n7\n/\n") do
+      fake_stdin("-\nq") do
         expect do 
           @calc.take_input
-        end.to output(">3\n>2\n>6\n>1\n>7\n>7\n>1\n>\n").to_stdout
+        end.to output(">3\n>").to_stdout
+      end
+      @calc.stack.push(2)
+      fake_stdin("*\nq") do
+        expect do 
+          @calc.take_input
+        end.to output(">6\n>").to_stdout
+      end
+      @calc.stack.push(1)
+      fake_stdin("+\nq") do
+        expect do 
+          @calc.take_input
+        end.to output(">7\n>").to_stdout
+      end
+      @calc.stack.push(7)
+      fake_stdin("/\nq") do
+        expect do 
+          @calc.take_input
+        end.to output(">1\n>").to_stdout
       end
     end
   end
