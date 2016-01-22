@@ -123,18 +123,29 @@ describe  RPNCalculator do
   #fake_stdin borrowed from
   #https://gist.github.com/nu7hatch/631329/d2b1c2728a24cc3cab2d6967bfef17fe89016778
   describe '#take_input' do
-    it 'should be able to quit' do
-      fake_stdin("q") do 
-        expect(@calc.take_input).to be nil
+    specify 'should be able to quit' do
+      fake_stdin("q") do
+        expect do 
+          @calc.take_input
+        end.to output('>').to_stdout
       end
     end
 
-    it 'should parse numbers' do
-      fail
+    specify 'should parse numbers' do
+      fake_stdin("2\n3.445671\n-5\n") do
+        expect do 
+          @calc.take_input
+        end.to output(">2\n>3.445671\n>-5\n>\n").to_stdout
+      end
     end
 
-    it 'should parse operations' do
-      fail
+    specify 'should parse operations' do
+      @calc.stack.push(7,4)
+      fake_stdin("-\n2\n*\n1\n+\n7\n/\n") do
+        expect do 
+          @calc.take_input
+        end.to output(">3\n>2\n>6\n>1\n>7\n>7\n>1\n>\n").to_stdout
+      end
     end
   end
 end
