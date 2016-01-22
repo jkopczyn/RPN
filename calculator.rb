@@ -25,6 +25,7 @@ class RPNCalculator
     return unless n.is_a? Numeric
     @stack.push (n%1).zero? ? n.to_i : n
     puts @stack.last
+    @stack.last
   end
 
   def take_input
@@ -48,4 +49,4 @@ class RPNCalculator
 end
 
 calc = RPNCalculator.new
-calc.take_input
+#calc.take_input
